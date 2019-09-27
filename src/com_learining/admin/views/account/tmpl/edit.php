@@ -16,14 +16,23 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
 HTMLHelper::_('behavior.formvalidator');
-HTMLHelper::_('formbehavior.chosen', '#jform_category_id', null, array('disable_search_threshold' => 0 ));
 HTMLHelper::_('formbehavior.chosen', 'select');
+
+JFactory::getDocument()->addScriptDeclaration("
+	Joomla.submitbutton = function(task)
+	{
+		if (task == 'account.cancel' || document.formvalidator.isValid(document.getElementById('account-form')))
+		{
+			Joomla.submitform(task, document.getElementById('account-form'));
+		}
+	};
+");
 
 $fieldSetCounter = 0;
 $id = isset($this->item->id) ? $this->item->id : 0;
 ?>
 <div id="learning-wrapper" class="container-fluid">
-	<form action="<?php echo 'index.php?option=com_learning&view=account&layout=edit&id=' . (int) $id; ?>" method="POST" name="adminForm" id="adminForm" class="form-validate">
+	<form action="<?php echo 'index.php?option=com_learning&view=account&layout=edit&id=' . (int) $id; ?>" method="POST" name="adminForm" id="account-form" class="form-validate">
 		<div class="form-horizontal">
 		<?php
 		if ($this->form)
@@ -79,8 +88,6 @@ $id = isset($this->item->id) ? $this->item->id : 0;
 		?>
 		</div>
 		<?php
-		$task = ($this->popup) ? 'account.popupSave' : 'account.edit';
-
 		if ($this->popup)
 		{
 			?>
@@ -90,7 +97,7 @@ $id = isset($this->item->id) ? $this->item->id : 0;
 			<?php
 		}
 		?>
-		<input type="hidden" name="task" value="<?php echo $task;?>" />
+		<input type="hidden" name="task" value="" />
 		<?php echo HTMLHelper::_('form.token'); ?>
 	</form>
 </div>
