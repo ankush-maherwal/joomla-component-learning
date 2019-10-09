@@ -5,6 +5,7 @@
 CREATE TABLE IF NOT EXISTS `#__learning_account` (
   `id` int(11) NOT NULL auto_increment,
   `title` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `contact_number` bigint(15),
   `payment_details` varchar(600),
   `address` varchar(700),
