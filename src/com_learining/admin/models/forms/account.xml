@@ -6,6 +6,7 @@
 			<option value="1">JPUBLISHED</option>
 			<option value="0">JUNPUBLISHED</option>
 		</field>
+		<field name="email" type="email" class="validate-email" validate="email" label="COM_LEARNING_ACCOUNT_CONTACT_EMAIL" description="COM_LEARNING_ACCOUNT_CONTACT_EMAIL_DESC" />
 		<field name="contact_number" type="number" class="validate validate-contactnumber" size="12" label="COM_LEARNING_ACCOUNT_CONTACT_NUMBER" description="COM_LEARNING_ACCOUNT_CONTACT_NUMBER_DESC" />
 		<field name="payment_details" type="textarea" rows="5" cols="50" label="COM_LEARNING_ACCOUNT_PAYMENT_DETAILS" description="COM_LEARNING_ACCOUNT_PAYMENT_DETAILS_DESC" />
 		<field name="address" type="textarea" rows="5" cols="50" label="COM_LEARNING_ACCOUNT_ADDRESS" description="COM_LEARNING_ACCOUNT_ADDRESS_DESC" />
